@@ -3,10 +3,22 @@ package com.springmvcandrestapi.dto;
 import java.time.LocalDate;
 
 public class EmployeeDTO {
-    Long id;
-    String name;
-    Double salary;
-    LocalDate dateOfJoining;
+    private Long id;
+    private String name;
+    private Double salary;
+    private LocalDate dateOfJoining;
+    private boolean isActive;
+
+    public EmployeeDTO() {
+    }
+
+    public EmployeeDTO(Long id, String name, Double salary, LocalDate dateOfJoining, boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.salary = salary;
+        this.dateOfJoining = dateOfJoining;
+        this.isActive = isActive;
+    }
 
     public Long getId() {
         return id;
@@ -38,5 +50,24 @@ public class EmployeeDTO {
 
     public void setDateOfJoining(LocalDate dateOfJoining) {
         this.dateOfJoining = dateOfJoining;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean active) {
+        isActive = active;
+    }
+
+    @java.lang.Override
+    public java.lang.String toString() {
+        return "EmployeeDTO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                ", dateOfJoining=" + dateOfJoining +
+                ", isActive=" + isActive +
+                '}';
     }
 }
