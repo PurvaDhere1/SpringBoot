@@ -1,26 +1,31 @@
 package com.springmvcandrestapi.controller;
 
 import com.springmvcandrestapi.dto.EmployeeDTO;
-import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDate;
+import com.springmvcandrestapi.services.IEmployeeService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 @RestController
+@RequestMapping(path = "/employee")
 public class EmployeeController {
 
-    @GetMapping(path="/secretmessage")
-    public String getMessage(){
-       return "Here is your messagessss";
+    IEmployeeService employeeService;
+
+    public EmployeeController(IEmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
-    @GetMapping(path="/employee/{employeeId}")
-    public EmployeeDTO getEmployeeById(@PathVariable Long employeeId){
-        return new EmployeeDTO(employeeId, "Purva", 40000.00, LocalDate.of(2023,01,11), true );
+    @GetMapping(path="/all")
+    public List<EmployeeDTO> getEmployeeDetails(){
+        return employeeService.getEmployeeDetails();
     }
 
-    @PostMapping(path = "/create/employee")
-    public EmployeeDTO createEmployeeById(@RequestBody EmployeeDTO req){
-       return req;
-   }
+    @RequestMapping(path="/create")
+    public EmployeeDTO createEmployee(@RequestBody EmployeeDTO employeeDTO){
+        return employeeService.createEmployeeDetails(employeeDTO);
+    }
 
 }
