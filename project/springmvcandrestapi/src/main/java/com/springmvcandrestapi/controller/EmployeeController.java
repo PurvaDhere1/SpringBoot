@@ -2,10 +2,8 @@ package com.springmvcandrestapi.controller;
 
 import com.springmvcandrestapi.dto.EmployeeDTO;
 import com.springmvcandrestapi.services.IEmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -26,6 +24,16 @@ public class EmployeeController {
     @RequestMapping(path="/create")
     public EmployeeDTO createEmployee(@RequestBody EmployeeDTO employeeDTO){
         return employeeService.createEmployeeDetails(employeeDTO);
+    }
+
+    @PutMapping(path = "/update/{employeeId}")
+    public EmployeeDTO updateEmployeeDetails(@PathVariable Long employeeId, @RequestBody EmployeeDTO employeeDTO){
+        return employeeService.updateEmployeeDetails(employeeId, employeeDTO);
+    }
+
+    @DeleteMapping(path="/delete/{employeeId}")
+    public boolean deleteEmployeeById(@PathVariable Long employeeId){
+        return employeeService.deleteEmployeeById(employeeId);
     }
 
 }

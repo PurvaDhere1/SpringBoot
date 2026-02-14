@@ -9,4 +9,8 @@ public interface IEmployeeService {
     public List<EmployeeDTO> getEmployeeDetails();
 
     public EmployeeDTO createEmployeeDetails(EmployeeDTO employeeDTO);
+
+    public EmployeeDTO updateEmployeeDetails(Long employeeId, EmployeeDTO employeeDTO);
+
+    public boolean deleteEmployeeById(Long employeeId);
 }
