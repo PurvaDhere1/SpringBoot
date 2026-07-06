@@ -2,12 +2,3 @@ spring:
   application:
     name: lovable-clone
     description: this is application
-  datasource:
-    url: jdbc:postgresql://localhost:5432/lovable_clone
-    username: postgres
-    password: your_password
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
