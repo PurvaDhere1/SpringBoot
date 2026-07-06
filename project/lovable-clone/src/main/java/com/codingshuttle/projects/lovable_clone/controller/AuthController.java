@@ -8,10 +8,7 @@ import com.codingshuttle.projects.lovable_clone.service.AuthService;
 import com.codingshuttle.projects.lovable_clone.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,12 +19,12 @@ public class AuthController {
     UserService userService;
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthResponse> getAuthentication(SignupRequest signupRequest){
+    public ResponseEntity<AuthResponse> getAuthentication(@RequestBody SignupRequest signupRequest){
         return ResponseEntity.ok(authService.getAuthentication(signupRequest));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserProfileResponse> getLogin(LoginRequest loginRequest){
+    public ResponseEntity<UserProfileResponse> getLogin(@RequestBody LoginRequest loginRequest){
         return ResponseEntity.ok(authService.getLogin(loginRequest));
     }
 

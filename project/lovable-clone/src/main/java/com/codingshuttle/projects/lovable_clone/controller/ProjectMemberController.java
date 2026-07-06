@@ -46,7 +46,7 @@ public class ProjectMemberController {
     }
 
     @DeleteMapping("/{memberId}")
-    public ResponseEntity<MemberResponse> updateMemberRole(
+    public ResponseEntity<MemberResponse> DeleteMemberRole(
             @PathVariable Long projectId,
             @PathVariable Long memberId
     ) {
